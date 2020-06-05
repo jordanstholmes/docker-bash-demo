@@ -26,15 +26,17 @@ docker exec demo npm run seed
 # Go into the container to snoop around.
 # This is profoundly useful for debugging issues inside your container/image.
 #     docker exec -it demo bash
-# look for "seedData.txt"
+# look for "newFile.txt"
 
 # Add the changes you made inside the container to the image (how awesome is that!)
+# No need to stop the container, rebuild the image, and start a new container from the new image
+# to test every little change
 docker commit demo bash-docker-demo
 
-# You can check and see that the seedData.txt file has been added to the image:
+# You can check and see that the newFile.txt file has been added to the image:
 #   docker stop demo
 #   docker run -d -p 1000:3000 --name demo --rm bash-docker-demo
-# If you "snoop" around inside this NEW container, you'll see that the "seedData.txt" file is now a part of the image
+# If you "snoop" around inside this NEW container, you'll see that the "newFile.txt" file is now a part of the image
 
 # Push new image to docker hub
 docker tag bash-docker-demo bash-docker-demo
